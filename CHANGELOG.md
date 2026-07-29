@@ -2,6 +2,20 @@
 
 Format based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.2.4-private-review] - 2026-07-29
+
+### Changed
+- StigForge export refresh for `ubuntu22_stig` at `0.2.4-private-review`.
+
+### Verified (OpenSCAP)
+
+- **`stig`** — score **100.0%** (floor 90.0%) · gate **PASS** · evidence `20260729T100151Z`
+
+### Provenance
+
+- Factory pipeline: https://github.com/stigready/stigforge/actions/runs/30440754045
+- Factory commit: `c481b47d629f5bc2357a86a933aa6f94f5245fce`
+
 ## [0.2.3-private-review] - 2026-07-29
 
 ### Added

@@ -1,8 +1,0 @@
-{
-  "role": "ubuntu22_stig",
-  "version": "0.2.3-private-review",
-  "factory_repo": "stigready/stigforge",
-  "matrix_status": "green",
-  "pipeline_run_id": "30435216810",
-  "factory_commit": "e8e323a3af3258bee63ebc1a873ba26c0cc12049"
-}

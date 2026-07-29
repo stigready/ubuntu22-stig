@@ -3,7 +3,7 @@
   "role": "ubuntu22_stig",
   "profile": "stig",
   "product": "ubuntu2204",
-  "timestamp": "20260729T082911Z",
+  "timestamp": "20260729T100151Z",
   "outcome": "success",
   "matrix": {
     "role": "ubuntu22_stig",
@@ -61,7 +61,7 @@
       "name": "OpenSCAP ARF",
       "desc": "Asset Reporting Format \u2014 POA&M source (stigready parity)",
       "local": "arf.xml",
-      "bytes": 17466101
+      "bytes": 17466164
     },
     {
       "name": "OpenSCAP report (HTML)",
