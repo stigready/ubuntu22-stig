@@ -1,0 +1,1 @@
+OpenSCAP: pass=47 fail=0 score=100.0% (target 90%)

@@ -1,0 +1,33 @@
+galaxy_info:
+  role_name: ubuntu22_stig
+  namespace: stigready
+  description: Ansible role for Ubuntu 22.04 LTS DISA STIG hardening (stig). ComplianceAsCode/SSG
+    remediation, OpenSCAP-verified in StigForge CI. Install with ansible-galaxy or
+    git.
+  license: BSD-3-Clause
+  min_ansible_version: '2.16'
+  platforms:
+  - name: Ubuntu
+    versions:
+    - '22.04'
+  author: stigready
+  company: StigReady
+  galaxy_tags:
+  - ansible
+  - ansible-role
+  - compliance
+  - devsecops
+  - disa
+  - disa-stig
+  - hardening
+  - infrastructure
+  - jammy
+  - openscap
+  - security
+  - stig
+  - stigforge
+  - ubuntu
+  - ubuntu2204
+  github_branch: main
+  issue_tracker_url: https://github.com/stigready/ubuntu22-stig/issues
+dependencies: []

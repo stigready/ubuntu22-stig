@@ -1,0 +1,240 @@
+# StigForge supplements for Ubuntu 22.04 STIG — not overwritten by `stigforge generate`.
+# Every rule below has NO ansible remediation in ComplianceAsCode/content 0.1.78's
+# ubuntu2204-playbook-stig.yml (confirmed by regenerating the fix directly from the
+# datastream with `oscap xccdf generate fix`, not just the pre-built release zip) —
+# these are genuine upstream SSG coverage gaps for this product, not StigForge filtering.
+# Target values below are the "stig" profile's own <xccdf:refine-value> selections (or
+# the Value element's unselected default when the stig profile doesn't refine it) read
+# directly out of ssg-ubuntu2204-ds.xml — not invented.
+
+- name: StigForge supplement - set PASS_MAX_DAYS in /etc/login.defs (accounts_maximum_age_login_defs)
+  ansible.builtin.lineinfile:
+    path: /etc/login.defs
+    regexp: '^\s*PASS_MAX_DAYS\s+'
+    line: "PASS_MAX_DAYS   60"
+    state: present
+  tags:
+    - accounts_maximum_age_login_defs
+
+- name: StigForge supplement - set PASS_MIN_DAYS in /etc/login.defs (accounts_minimum_age_login_defs)
+  ansible.builtin.lineinfile:
+    path: /etc/login.defs
+    regexp: '^\s*PASS_MIN_DAYS\s+'
+    line: "PASS_MIN_DAYS   1"
+    state: present
+  tags:
+    - accounts_minimum_age_login_defs
+
+- name: StigForge supplement - set INACTIVE in /etc/default/useradd (account_disable_post_pw_expiration)
+  ansible.builtin.lineinfile:
+    path: /etc/default/useradd
+    regexp: '^\s*#?\s*INACTIVE='
+    line: "INACTIVE=35"
+    state: present
+    create: true
+  tags:
+    - account_disable_post_pw_expiration
+
+- name: StigForge supplement - check for a maxlogins limits.d fragment (accounts_max_concurrent_login_sessions)
+  ansible.builtin.stat:
+    path: /etc/security/limits.d
+  register: stigforge_limits_d
+  tags:
+    - accounts_max_concurrent_login_sessions
+
+- name: StigForge supplement - cap concurrent login sessions per account (accounts_max_concurrent_login_sessions)
+  ansible.builtin.lineinfile:
+    path: "{{ '/etc/security/limits.d/99-stigforge-maxlogins.conf' if stigforge_limits_d.stat.exists else '/etc/security/limits.conf' }}"
+    regexp: '^\*\s+hard\s+maxlogins\s+'
+    line: "*               hard    maxlogins       10"
+    state: present
+    create: true
+  tags:
+    - accounts_max_concurrent_login_sessions
+
+- name: StigForge supplement - check the presence of /etc/security/faillock.conf (deny/interval/unlock_time)
+  ansible.builtin.stat:
+    path: /etc/security/faillock.conf
+  register: stigforge_faillock_conf
+  when: '"libpam-runtime" in ansible_facts.packages'
+  tags:
+    - accounts_passwords_pam_faillock_deny
+    - accounts_passwords_pam_faillock_interval
+    - accounts_passwords_pam_faillock_unlock_time
+
+- name: StigForge supplement - set faillock deny threshold (accounts_passwords_pam_faillock_deny)
+  ansible.builtin.lineinfile:
+    path: /etc/security/faillock.conf
+    regexp: '^\s*deny\s*='
+    line: "deny = 3"
+    state: present
+  when:
+    - '"libpam-runtime" in ansible_facts.packages'
+    - stigforge_faillock_conf is not skipped and stigforge_faillock_conf.stat.exists
+  tags:
+    - accounts_passwords_pam_faillock_deny
+
+- name: StigForge supplement - set faillock fail_interval (accounts_passwords_pam_faillock_interval)
+  ansible.builtin.lineinfile:
+    path: /etc/security/faillock.conf
+    regexp: '^\s*fail_interval\s*='
+    line: "fail_interval = 900"
+    state: present
+  when:
+    - '"libpam-runtime" in ansible_facts.packages'
+    - stigforge_faillock_conf is not skipped and stigforge_faillock_conf.stat.exists
+  tags:
+    - accounts_passwords_pam_faillock_interval
+
+- name: StigForge supplement - set faillock unlock_time (accounts_passwords_pam_faillock_unlock_time)
+  ansible.builtin.lineinfile:
+    path: /etc/security/faillock.conf
+    regexp: '^\s*unlock_time\s*='
+    line: "unlock_time = 0"
+    state: present
+  when:
+    - '"libpam-runtime" in ansible_facts.packages'
+    - stigforge_faillock_conf is not skipped and stigforge_faillock_conf.stat.exists
+  tags:
+    - accounts_passwords_pam_faillock_unlock_time
+
+- name: StigForge supplement - add pam_faildelay delay to /etc/pam.d/common-auth (accounts_passwords_pam_faildelay_delay)
+  ansible.builtin.lineinfile:
+    path: /etc/pam.d/common-auth
+    regexp: '^\s*auth\s+\S+\s+pam_faildelay\.so'
+    line: "auth        required                        pam_faildelay.so delay=4000000"
+    state: present
+    insertbefore: BOF
+  when: '"libpam-runtime" in ansible_facts.packages'
+  tags:
+    - accounts_passwords_pam_faildelay_delay
+
+- name: StigForge supplement - use sha512 + rounds for pam_unix.so password hashing (set_password_hashing_algorithm_auth_stig, accounts_password_pam_unix_rounds_password_auth)
+  ansible.builtin.lineinfile:
+    path: /etc/pam.d/common-password
+    regexp: '^password\s+\[success=1 default=ignore\]\s+pam_unix\.so\b.*$'
+    line: "password\t[success=1 default=ignore]\tpam_unix.so obscure sha512 rounds=100000"
+    state: present
+  when: '"libpam-runtime" in ansible_facts.packages'
+  tags:
+    - set_password_hashing_algorithm_auth_stig
+    - accounts_password_pam_unix_rounds_password_auth
+
+- name: StigForge supplement - notify last login attempts including failures (display_login_attempts)
+  ansible.builtin.lineinfile:
+    path: /etc/pam.d/login
+    regexp: '^\s*session\s+\S+\s+pam_lastlog\.so\b.*$'
+    line: "session    required   pam_lastlog.so showfailed"
+    state: present
+  tags:
+    - display_login_attempts
+
+# OVAL check (oval:ssg-test_remove_unused_dependencies/kernel_packages) scans
+# /etc/apt/apt.conf* for Unattended-Upgrade::Remove-Unused-* — not APT::Get::* as
+# the human-readable rule description implies; confirmed by reading the datastream's
+# textfilecontent54_object pattern directly rather than guessing from prose.
+- name: StigForge supplement - configure apt to remove unused dependencies and kernels after upgrade (clean_components_post_updating)
+  ansible.builtin.lineinfile:
+    path: /etc/apt/apt.conf
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    state: present
+    create: true
+  loop:
+    - regexp: '^\s*Unattended-Upgrade::Remove-Unused-Dependencies\b'
+      line: 'Unattended-Upgrade::Remove-Unused-Dependencies "true";'
+    - regexp: '^\s*Unattended-Upgrade::Remove-Unused-Kernel-Packages\b'
+      line: 'Unattended-Upgrade::Remove-Unused-Kernel-Packages "true";'
+  loop_control:
+    label: "{{ item.line }}"
+  tags:
+    - clean_components_post_updating
+
+# file_groupowner_var_log's OVAL check (oval:ssg-file_groupowner_var_log:def:1) requires
+# /var/log/ group-owned specifically by "syslog" — unlike its sibling rule
+# file_groupowner_var_log_syslog (for /var/log/syslog the *file*), which accepts
+# adm or root as a fallback. Upstream's own remediation for this rule only sets
+# file_groupowner_var_log_newgroup when the "syslog" group already exists (via
+# getent), so on a minimal container image without rsyslog installed it leaves the
+# var undefined and /var/log/ ownership untouched. The correct fix is to ensure the
+# "syslog" system group exists (as it would on any real Ubuntu 22.04 host with
+# rsyslog/syslog infra installed) rather than substitute a different group the
+# check doesn't accept.
+- name: StigForge supplement - ensure the syslog system group exists (file_groupowner_var_log)
+  ansible.builtin.group:
+    name: syslog
+    system: true
+    state: present
+  tags:
+    - file_groupowner_var_log
+
+# NOTE (tracked, not silently dropped): banner_etc_profiled_ssh_confirm's OVAL check
+# compiles the `var_ssh_confirm_text` Value directly as a PCRE pattern-match against
+# /etc/profile.d/*.sh. Confirmed via `oscap xccdf generate fix --fix-type bash` against
+# ssg-ubuntu2204-ds.xml (0.1.78) that upstream's OWN bash fix template is broken: its
+# step-2 `sed 's/(?:\[\\n\]+|(?:\\n)+)/\n/g'` never matches the Value's actual escaping
+# (GNU sed on the same base image leaves literal `(?:[n]+|(?:n)+)` tokens in the
+# generated /etc/profile.d/ssh_confirm.sh — i.e. running ComplianceAsCode's own
+# remediation produces a banner that fails its own check). This is an upstream
+# ComplianceAsCode/content defect, not a StigForge gap; we still install a correct,
+# human-readable banner below (real security value) rather than skip it, but do not
+# claim a compliance PASS we can't verify — do not hand-craft content solely to satisfy
+# the raw regex without a local oscap re-scan proving the match, per repo policy against
+# faking green.
+- name: StigForge supplement - install the SSH login confirmation banner script (banner_etc_profiled_ssh_confirm)
+  ansible.builtin.copy:
+    dest: /etc/profile.d/ssh_confirm.sh
+    owner: root
+    group: root
+    mode: "0755"
+    content: |
+      #!/bin/bash
+
+      if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+              while true; do
+                      read -p "
+
+      You are accessing a U.S. Government (USG) Information System (IS) that is provided for
+      USG-authorized use only.
+
+      By using this IS (which includes any device attached to this IS), you consent to the
+      following conditions:
+
+      -The USG routinely intercepts and monitors communications on this IS for purposes
+      including, but not limited to, penetration testing, COMSEC monitoring, network
+      operations and defense, personnel misconduct (PM), law enforcement (LE), and
+      counterintelligence (CI) investigations.
+
+      -At any time, the USG may inspect and seize data stored on this IS.
+
+      -Communications using, or data stored on, this IS are not private, are subject to routine
+      monitoring, interception, and search, and may be disclosed or used for any USG-authorized
+      purpose.
+
+      -This IS includes security measures (e.g., authentication and access controls) to protect
+      USG interests--not for your personal benefit or privacy.
+
+      -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI
+      investigative searching or monitoring of the content of privileged communications, or
+      work product, related to personal representation or services by attorneys,
+      psychotherapists, or clergy, and their assistants. Such communications and work product
+      are private and confidential. See User Agreement for details.
+
+      Do you agree? [y/N] " yn
+                      case $yn in
+                              [Yy]* ) break ;;
+                              [Nn]* ) exit 1 ;;
+                      esac
+              done
+      fi
+  tags:
+    - banner_etc_profiled_ssh_confirm
+
+- name: StigForge supplement - ensure group owner on /var/log/ is syslog (file_groupowner_var_log)
+  ansible.builtin.file:
+    path: /var/log/
+    follow: false
+    state: directory
+    group: syslog
+  tags:
+    - file_groupowner_var_log

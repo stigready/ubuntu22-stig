@@ -1,0 +1,15 @@
+{
+  "pass": 47,
+  "fail": 0,
+  "other": 3,
+  "total_scored": 47,
+  "score": 100.0,
+  "min_score": 90.0,
+  "meets_floor": true,
+  "gate_pass": true,
+  "enforce": true,
+  "failures": [],
+  "regressions": [],
+  "baseline": null,
+  "openscap_line": "OpenSCAP: pass=47 fail=0 score=100.0% (target 90%)"
+}
