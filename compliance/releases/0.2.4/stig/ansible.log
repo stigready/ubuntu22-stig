@@ -889,10 +889,10 @@ TASK [/stigforge/roles/ubuntu22_stig : Find /var/log/ file(s) recursively] *****
 ok: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Set permissions for /var/log/ file(s)] ***
-changed: [localhost] => (item=/var/log/bootstrap.log)
-changed: [localhost] => (item=/var/log/dpkg.log)
-changed: [localhost] => (item=/var/log/alternatives.log)
 changed: [localhost] => (item=/var/log/faillog)
+changed: [localhost] => (item=/var/log/bootstrap.log)
+changed: [localhost] => (item=/var/log/alternatives.log)
+changed: [localhost] => (item=/var/log/dpkg.log)
 
 TASK [/stigforge/roles/ubuntu22_stig : Check that the syslog group is defined] ***
 fatal: [localhost]: FAILED! => {"changed": false, "msg": "One or more supplied key could not be found in the database."}
