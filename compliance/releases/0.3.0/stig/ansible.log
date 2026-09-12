@@ -13,18 +13,24 @@ ok: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Ensure aide is installed] ***************
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Ensure aide is installed] ***************
+TASK [/stigforge/roles/ubuntu22_stig : Configure AIDE to Verify the Audit Tools - Ensure AIDE is Installed] ***
 skipping: [localhost] => (item=aide) 
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Ensure AIDE is installed] ***************
+TASK [/stigforge/roles/ubuntu22_stig : Configure Periodic Execution of AIDE - Ensure AIDE is installed] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Install cron] ***************************
+TASK [/stigforge/roles/ubuntu22_stig : Configure Periodic Execution of AIDE - Install cron] ***
 skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure libnss-sss is installed] *********
+changed: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure libpam-pwquality is installed] ***
-changed: [localhost]
+ok: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure libpam-sss is installed] *********
+ok: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure vlock is installed] **************
 skipping: [localhost]
@@ -35,11 +41,13 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Ensure ufw is installed] ****************
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Ensure NetworkManager is installed] *****
-skipping: [localhost] => (item=NetworkManager) 
-skipping: [localhost]
-
 TASK [/stigforge/roles/ubuntu22_stig : Uninstall the telnet server: Ensure telnetd is removed] ***
+ok: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Uninstall nfs-common Package: Ensure nfs-common is removed] ***
+ok: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Uninstall nfs-kernel-server Package: Ensure nfs-kernel-server is removed] ***
 ok: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure chrony is installed] *************
@@ -48,13 +56,16 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Remove the ntp service: Ensure ntp is removed] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Remove the systemd_timesyncd Service: Ensure systemd-timesyncd is removed] ***
+TASK [/stigforge/roles/ubuntu22_stig : Ensure systemd-timesyncd is removed] ****
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Uninstall rsh-server Package: Ensure rsh-server is removed] ***
 ok: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure openssh-server is installed] *****
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure sssd is installed] ***************
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure audispd-plugins is installed] ****
@@ -67,9 +78,6 @@ TASK [/stigforge/roles/ubuntu22_stig : Gather the package facts] ***************
 ok: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Enable rsyslog Service - Enable Service rsyslog] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Verify ufw Enabled - Enable Service ufw] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Disable KDump Kernel Crash Analyzer (kdump) - Collect systemd Services Present in the System] ***
@@ -85,6 +93,9 @@ TASK [/stigforge/roles/ubuntu22_stig : Disable KDump Kernel Crash Analyzer (kdum
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Enable the OpenSSH Service - Enable Service ssh] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Enable the SSSD Service - Enable Service sssd] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Enable auditd Service - Enable Service auditd] ***
@@ -117,13 +128,13 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Build and Test AIDE Database - Build and Test AIDE Database] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Set audit_tools fact] *******************
+TASK [/stigforge/roles/ubuntu22_stig : Set "Configure AIDE to Verify the Audit Tools - audit_tools fact"] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Ensure existing AIDE configuration for audit tools are correct] ***
+TASK [/stigforge/roles/ubuntu22_stig : Configure AIDE to Verify the Audit Tools - Ensure Existing AIDE Configuration for Audit Tools are Correct] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Configure AIDE to properly protect audit tools] ***
+TASK [/stigforge/roles/ubuntu22_stig : Configure AIDE to Verify the Audit Tools - Configure AIDE to Properly Protect Audit Tools] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Check for duplicate values] *************
@@ -135,41 +146,47 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Insert correct line to /etc/default/aide] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Configure Periodic Execution of AIDE] ***
+TASK [/stigforge/roles/ubuntu22_stig : Configure Periodic Execution of AIDE - Setup Cron Tab] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Find /etc/sudoers.d/ files] *************
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Remove lines containing !authenticate from sudoers files] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Modify the System Login Banner for Remote Connections - ensure correct banner] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Account Lockouts Must Be Logged - Check if system relies on pam-auth-update tool] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Account Lockouts Must Be Logged - Check the presence of cac_faillock file] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Account Lockouts Must Be Logged - Check the presence of cac_faillock_notify file] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Account Lockouts Must Be Logged - Put the content into cac_faillock if it does not exist] ***
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Account Lockouts Must Be Logged - Put the content into cac_faillock_notify if it does not exist] ***
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : None - Ensure pam-auth-update profile changes are applied] ***
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : None - Ensure pam-auth-update profile changes are applied] ***
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Account Lockouts Must Be Logged - Check the presence of /etc/security/faillock.conf file] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Account Lockouts Must Be Logged - Ensure the pam_faillock.so audit parameter in /etc/security/faillock.conf] ***
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Account Lockouts Must Be Logged - Check if /etc/pam.d/system-auth file is present] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Account Lockouts Must Be Logged - Define the PAM file to be edited as a local fact] ***
 skipping: [localhost]
@@ -232,7 +249,7 @@ TASK [/stigforge/roles/ubuntu22_stig : Account Lockouts Must Be Logged - Ensure 
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Account Lockouts Must Be Logged - Check if /etc/pam.d/password-auth file is present] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Account Lockouts Must Be Logged - Define the PAM file to be edited as a local fact] ***
 skipping: [localhost]
@@ -303,13 +320,13 @@ skipping: [localhost] => (item=/etc/pam.d/password-auth)
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Do Not Show System Messages When Unsuccessful Logon Attempts Occur - Check if system relies on pam-auth-update tool] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Do Not Show System Messages When Unsuccessful Logon Attempts Occur - Check the presence of cac_faillock file] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Do Not Show System Messages When Unsuccessful Logon Attempts Occur - Check the presence of cac_faillock_notify file] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Do Not Show System Messages When Unsuccessful Logon Attempts Occur - Put the content into cac_faillock if it does not exist] ***
 skipping: [localhost]
@@ -318,19 +335,19 @@ TASK [/stigforge/roles/ubuntu22_stig : Do Not Show System Messages When Unsucces
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : None - Ensure pam-auth-update profile changes are applied] ***
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : None - Ensure pam-auth-update profile changes are applied] ***
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Do Not Show System Messages When Unsuccessful Logon Attempts Occur - Check the presence of /etc/security/faillock.conf file] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Do Not Show System Messages When Unsuccessful Logon Attempts Occur - Ensure the pam_faillock.so silent parameter in /etc/security/faillock.conf] ***
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Do Not Show System Messages When Unsuccessful Logon Attempts Occur - Check if /etc/pam.d/system-auth file is present] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Do Not Show System Messages When Unsuccessful Logon Attempts Occur - Define the PAM file to be edited as a local fact] ***
 skipping: [localhost]
@@ -393,7 +410,7 @@ TASK [/stigforge/roles/ubuntu22_stig : Do Not Show System Messages When Unsucces
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Do Not Show System Messages When Unsuccessful Logon Attempts Occur - Check if /etc/pam.d/password-auth file is present] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Do Not Show System Messages When Unsuccessful Logon Attempts Occur - Define the PAM file to be edited as a local fact] ***
 skipping: [localhost]
@@ -461,263 +478,111 @@ skipping: [localhost] => (item=/etc/pam.d/password-auth)
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure PAM Enforces Password Requirements - Minimum Digit Characters - Check if system relies on pam-auth-update tool] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Check if /usr/share/pam-configs/cac_pwquality exists] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Put the content into /usr/share/pam-configs/cac_pwquality if it does not exist] ***
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure PAM Enforces Password Requirements - Minimum Digit Characters - Ensure pam-auth-update profile changes are applied] ***
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure PAM Enforces Password Requirements - Minimum Digit Characters - Ensure PAM variable dcredit is set accordingly] ***
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure PAM Enforces Password Requirements - Prevent the Use of Dictionary Words - Check if system relies on pam-auth-update tool] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Check if /usr/share/pam-configs/cac_pwquality exists] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Put the content into /usr/share/pam-configs/cac_pwquality if it does not exist] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure PAM Enforces Password Requirements - Prevent the Use of Dictionary Words - Ensure pam-auth-update profile changes are applied] ***
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure PAM Enforces Password Requirements - Prevent the Use of Dictionary Words - Ensure PAM variable dictcheck is set accordingly] ***
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure PAM Enforces Password Requirements - Minimum Different Characters - Check if system relies on pam-auth-update tool] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Check if /usr/share/pam-configs/cac_pwquality exists] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Put the content into /usr/share/pam-configs/cac_pwquality if it does not exist] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure PAM Enforces Password Requirements - Minimum Different Characters - Ensure pam-auth-update profile changes are applied] ***
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure PAM Enforces Password Requirements - Minimum Different Characters - Ensure PAM variable difok is set accordingly] ***
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure PAM Enforces Password Requirements - Enforcing] ***
-[WARNING]: The regular expression is an empty string, which will match every
-line in the file. This may have unintended consequences, such as replacing the
-last line in the file rather than appending. If this is desired, use '^' to
-match every line in the file and avoid this warning.
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure PAM Enforces Password Requirements - Minimum Lowercase Characters - Check if system relies on pam-auth-update tool] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Check if /usr/share/pam-configs/cac_pwquality exists] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Put the content into /usr/share/pam-configs/cac_pwquality if it does not exist] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure PAM Enforces Password Requirements - Minimum Lowercase Characters - Ensure pam-auth-update profile changes are applied] ***
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure PAM Enforces Password Requirements - Minimum Lowercase Characters - Ensure PAM variable lcredit is set accordingly] ***
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure PAM Enforces Password Requirements - Minimum Length - Check if system relies on pam-auth-update tool] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Check if /usr/share/pam-configs/cac_pwquality exists] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Put the content into /usr/share/pam-configs/cac_pwquality if it does not exist] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure PAM Enforces Password Requirements - Minimum Length - Ensure pam-auth-update profile changes are applied] ***
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure PAM Enforces Password Requirements - Minimum Length - Ensure PAM variable minlen is set accordingly] ***
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure PAM Enforces Password Requirements - Minimum Special Characters - Check if system relies on pam-auth-update tool] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Check if /usr/share/pam-configs/cac_pwquality exists] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Put the content into /usr/share/pam-configs/cac_pwquality if it does not exist] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure PAM Enforces Password Requirements - Minimum Special Characters - Ensure pam-auth-update profile changes are applied] ***
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure PAM Enforces Password Requirements - Minimum Special Characters - Ensure PAM variable ocredit is set accordingly] ***
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure PAM Enforces Password Requirements - Minimum Uppercase Characters - Check if system relies on pam-auth-update tool] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Check if /usr/share/pam-configs/cac_pwquality exists] ***
-ok: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Put the content into /usr/share/pam-configs/cac_pwquality if it does not exist] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure PAM Enforces Password Requirements - Minimum Uppercase Characters - Ensure pam-auth-update profile changes are applied] ***
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure PAM Enforces Password Requirements - Minimum Uppercase Characters - Ensure PAM variable ucredit is set accordingly] ***
-changed: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Check if /etc/pam.d/system-auth file is present] ***
-ok: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Define the PAM file to be edited as a local fact] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Check if system relies on authselect tool] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Check integrity of authselect current profile] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Informative message based on the authselect integrity check result] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Get authselect current profile] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Define the current authselect profile as a local fact] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Define the new authselect custom profile as a local fact] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Get authselect current features to also enable them in the custom profile] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Check if any custom profile with the same name was already created] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Create an authselect custom profile based on the current profile] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Create an authselect custom profile based on sssd profile] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Ensure authselect changes are applied] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Ensure the authselect custom profile is selected] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Restore the authselect features in the custom profile] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Ensure authselect changes are applied] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Change the PAM file to be edited according to the custom authselect profile] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Define a fact for control already filtered in case filters are used] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Check if expected PAM module line is present in {{ pam_file_path }}] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Check if required PAM module line is present in {{ pam_file_path }} with different control] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Ensure the correct control for the required PAM module line in {{ pam_file_path }}] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Ensure the required PAM module line is included in {{ pam_file_path }}] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Ensure authselect changes are applied] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Define a fact for control already filtered in case filters are used] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Check if the required PAM module option is present in {{ pam_file_path }}] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Ensure the "{{ var_password_hashing_algorithm_pam }}" PAM option for "pam_unix.so" is included in {{ pam_file_path }}] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Ensure authselect changes are applied] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Check if /etc/pam.d/system-auth File is Present] ***
-ok: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Define the PAM file to be edited as a local fact] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Check if system relies on authselect tool] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Check integrity of authselect current profile] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Informative message based on the authselect integrity check result] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Get authselect current profile] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Define the current authselect profile as a local fact] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Define the new authselect custom profile as a local fact] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Get authselect current features to also enable them in the custom profile] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Check if any custom profile with the same name was already created] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Create an authselect custom profile based on the current profile] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Create an authselect custom profile based on sssd profile] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Ensure authselect changes are applied] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Ensure the authselect custom profile is selected] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Restore the authselect features in the custom profile] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Ensure authselect changes are applied] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Change the PAM file to be edited according to the custom authselect profile] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Check if "{{ pam_file_path }}" File is Present] ***
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Ensure That Only the Correct Hashing Algorithm Option For pam_unix.so Is Used in {{ pam_file_path }}] ***
-skipping: [localhost] => (item=sha512) 
-skipping: [localhost] => (item=yescrypt) 
-skipping: [localhost] => (item=gost_yescrypt) 
-skipping: [localhost] => (item=blowfish) 
-skipping: [localhost] => (item=sha256) 
-skipping: [localhost] => (item=md5) 
-skipping: [localhost] => (item=bigcrypt) 
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Set PAM's Password Hashing Algorithm - Ensure authselect changes are applied] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Disable Ctrl-Alt-Del Reboot Activation] ***
@@ -745,6 +610,7 @@ TASK [/stigforge/roles/ubuntu22_stig : Prevent Login to Accounts With Empty Pass
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Prevent Login to Accounts With Empty Password - Remediate directly editing PAM files] ***
+changed: [localhost] => (item=/etc/pam.d/common-auth)
 ok: [localhost] => (item=/etc/pam.d/common-password)
 
 TASK [/stigforge/roles/ubuntu22_stig : Collect users with no password] *********
@@ -759,11 +625,11 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Set Interactive Session Timeout] ********
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Check if UMASK is already set] **********
-ok: [localhost]
+TASK [/stigforge/roles/ubuntu22_stig : Set default umask] **********************
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Replace user UMASK in /etc/login.defs] ***
-changed: [localhost]
+skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure the Default UMASK is Appended Correctly] ***
 skipping: [localhost]
@@ -870,29 +736,53 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Set permissions for /var/log/journal/ file(s)] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : List /etc/sysctl.d/*.conf files] ********
+TASK [/stigforge/roles/ubuntu22_stig : Enable Kernel Parameter to Use TCP Syncookies on Network Interfaces - Set fact for sysctl paths] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Comment out any occurrences of net.ipv4.tcp_syncookies from config files] ***
+TASK [/stigforge/roles/ubuntu22_stig : Enable Kernel Parameter to Use TCP Syncookies on Network Interfaces - Find all files that contain net.ipv4.tcp_syncookies] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Comment out any occurrences of net.ipv4.tcp_syncookies from /etc/ufw/sysctl.conf] ***
+TASK [/stigforge/roles/ubuntu22_stig : Enable Kernel Parameter to Use TCP Syncookies on Network Interfaces - Find all files that set net.ipv4.tcp_syncookies to correct value] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Ensure sysctl net.ipv4.tcp_syncookies is set] ***
+TASK [/stigforge/roles/ubuntu22_stig : Enable Kernel Parameter to Use TCP Syncookies on Network Interfaces - Comment out any occurrences of net.ipv4.tcp_syncookies from config files] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : NetworkManager Deactivate Wireless Network Interfaces] ***
+TASK [/stigforge/roles/ubuntu22_stig : Enable Kernel Parameter to Use TCP Syncookies on Network Interfaces - Comment out any occurrences of net.ipv4.tcp_syncookies from /etc/ufw/sysctl.conf] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Enable Kernel Parameter to Use TCP Syncookies on Network Interfaces - Ensure sysctl net.ipv4.tcp_syncookies is set] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Enable service ufw] *********************
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Deactivate Wireless Network Interfaces - Find wireless marker directories] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Deactivate Wireless Network Interfaces - Extract interface names from directory paths] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Deactivate Wireless Network Interfaces - Bring wireless interfaces down] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Deactivate Wireless Network Interfaces - Get driver name for each interface] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Deactivate Wireless Network Interfaces - Create disable wireless driver modprobe config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Deactivate Wireless Network Interfaces - Unload wireless kernel modules] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Find /var/log/ file(s) recursively] *****
 ok: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Set permissions for /var/log/ file(s)] ***
-changed: [localhost] => (item=/var/log/faillog)
 changed: [localhost] => (item=/var/log/bootstrap.log)
-changed: [localhost] => (item=/var/log/alternatives.log)
 changed: [localhost] => (item=/var/log/dpkg.log)
+changed: [localhost] => (item=/var/log/alternatives.log)
+changed: [localhost] => (item=/var/log/faillog)
 
 TASK [/stigforge/roles/ubuntu22_stig : Check that the syslog group is defined] ***
 fatal: [localhost]: FAILED! => {"changed": false, "msg": "One or more supplied key could not be found in the database."}
@@ -902,7 +792,7 @@ TASK [/stigforge/roles/ubuntu22_stig : Set the file_groupowner_var_log_newgroup 
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure group owner on /var/log/] ********
-fatal: [localhost]: FAILED! => {"msg": "The task includes an option with an undefined variable.. 'file_groupowner_var_log_newgroup' is undefined\n\nThe error appears to be in '/stigforge/roles/ubuntu22_stig/tasks/stig.yml': line 4544, column 5, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n- block:\n  - name: Ensure group owner on /var/log/\n    ^ here\n"}
+fatal: [localhost]: FAILED! => {"msg": "The task includes an option with an undefined variable.. 'file_groupowner_var_log_newgroup' is undefined\n\nThe error appears to be in '/stigforge/roles/ubuntu22_stig/tasks/stig.yml': line 4767, column 5, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n- block:\n  - name: Ensure group owner on /var/log/\n    ^ here\n"}
 
 TASK [/stigforge/roles/ubuntu22_stig : StigForge: continue after error in 'Ensure group owner on /var/log/' (OpenSCAP is the score gate)] ***
 ok: [localhost] => {
@@ -1059,28 +949,28 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Set the file_ownership_library_dirs_newown variable if represented by uid] ***
 ok: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Find /lib/ file(s) matching ^.*$ recursively] ***
+TASK [/stigforge/roles/ubuntu22_stig : Find /lib/ file(s) matching ^.*\.so.*$ recursively] ***
 ok: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Ensure owner on /lib/ file(s) matching ^.*$] ***
+TASK [/stigforge/roles/ubuntu22_stig : Ensure owner on /lib/ file(s) matching ^.*\.so.*$] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Find /lib64/ file(s) matching ^.*$ recursively] ***
+TASK [/stigforge/roles/ubuntu22_stig : Find /lib64/ file(s) matching ^.*\.so.*$ recursively] ***
 ok: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Ensure owner on /lib64/ file(s) matching ^.*$] ***
+TASK [/stigforge/roles/ubuntu22_stig : Ensure owner on /lib64/ file(s) matching ^.*\.so.*$] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Find /usr/lib/ file(s) matching ^.*$ recursively] ***
+TASK [/stigforge/roles/ubuntu22_stig : Find /usr/lib/ file(s) matching ^.*\.so.*$ recursively] ***
 ok: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Ensure owner on /usr/lib/ file(s) matching ^.*$] ***
+TASK [/stigforge/roles/ubuntu22_stig : Ensure owner on /usr/lib/ file(s) matching ^.*\.so.*$] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Find /usr/lib64/ file(s) matching ^.*$ recursively] ***
+TASK [/stigforge/roles/ubuntu22_stig : Find /usr/lib64/ file(s) matching ^.*\.so.*$ recursively] ***
 ok: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Ensure owner on /usr/lib64/ file(s) matching ^.*$] ***
+TASK [/stigforge/roles/ubuntu22_stig : Ensure owner on /usr/lib64/ file(s) matching ^.*\.so.*$] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Find /lib/ file(s) recursively] *********
@@ -1107,34 +997,73 @@ ok: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Set permissions for /usr/lib64/ file(s)] ***
 skipping: [localhost]
 
+TASK [/stigforge/roles/ubuntu22_stig : Set the root_permissions_syslibrary_files_newgroup variable if represented by gid] ***
+ok: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Find /lib/ file(s) matching ^.*\.so.*$ recursively] ***
+ok: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure group owner on /lib/ file(s) matching ^.*\.so.*$] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Find /lib64/ file(s) matching ^.*\.so.*$ recursively] ***
+ok: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure group owner on /lib64/ file(s) matching ^.*\.so.*$] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Find /usr/lib/ file(s) matching ^.*\.so.*$ recursively] ***
+ok: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure group owner on /usr/lib/ file(s) matching ^.*\.so.*$] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Find /usr/lib64/ file(s) matching ^.*\.so.*$ recursively] ***
+ok: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure group owner on /usr/lib64/ file(s) matching ^.*\.so.*$] ***
+skipping: [localhost]
+
 TASK [/stigforge/roles/ubuntu22_stig : Ensure kernel module 'usb-storage' is disabled] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure kernel module 'usb-storage' is blacklisted] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : List /etc/sysctl.d/*.conf files] ********
+TASK [/stigforge/roles/ubuntu22_stig : Restrict Access to Kernel Message Buffer - Set fact for sysctl paths] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Comment out any occurrences of kernel.dmesg_restrict from config files] ***
+TASK [/stigforge/roles/ubuntu22_stig : Restrict Access to Kernel Message Buffer - Find all files that contain kernel.dmesg_restrict] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Comment out any occurrences of kernel.dmesg_restrict from /etc/ufw/sysctl.conf] ***
+TASK [/stigforge/roles/ubuntu22_stig : Restrict Access to Kernel Message Buffer - Find all files that set kernel.dmesg_restrict to correct value] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Ensure sysctl kernel.dmesg_restrict is set to 1] ***
+TASK [/stigforge/roles/ubuntu22_stig : Restrict Access to Kernel Message Buffer - Comment out any occurrences of kernel.dmesg_restrict from config files] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : List /etc/sysctl.d/*.conf files] ********
+TASK [/stigforge/roles/ubuntu22_stig : Restrict Access to Kernel Message Buffer - Comment out any occurrences of kernel.dmesg_restrict from /etc/ufw/sysctl.conf] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Comment out any occurrences of kernel.randomize_va_space from config files] ***
+TASK [/stigforge/roles/ubuntu22_stig : Restrict Access to Kernel Message Buffer - Ensure sysctl kernel.dmesg_restrict is set to 1] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Comment out any occurrences of kernel.randomize_va_space from /etc/ufw/sysctl.conf] ***
+TASK [/stigforge/roles/ubuntu22_stig : Enable Randomized Layout of Virtual Address Space - Set fact for sysctl paths] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Ensure sysctl kernel.randomize_va_space is set to 2] ***
+TASK [/stigforge/roles/ubuntu22_stig : Enable Randomized Layout of Virtual Address Space - Find all files that contain kernel.randomize_va_space] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Enable Randomized Layout of Virtual Address Space - Find all files that set kernel.randomize_va_space to correct value] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Enable Randomized Layout of Virtual Address Space - Comment out any occurrences of kernel.randomize_va_space from config files] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Enable Randomized Layout of Virtual Address Space - Comment out any occurrences of kernel.randomize_va_space from /etc/ufw/sysctl.conf] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Enable Randomized Layout of Virtual Address Space - Ensure sysctl kernel.randomize_va_space is set to 2] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Configure Time Service Maxpoll Interval - Check That /etc/ntp.conf Exist] ***
@@ -1155,6 +1084,9 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Configure Time Service Maxpoll Interval - Set the maxpoll Values in /etc/chrony/chrony.conf] ***
 skipping: [localhost]
 
+TASK [/stigforge/roles/ubuntu22_stig : Configure Time Service Maxpoll Interval - Check That /etc/chrony/conf.d/ Exist] ***
+skipping: [localhost]
+
 TASK [/stigforge/roles/ubuntu22_stig : Configure Time Service Maxpoll Interval - Get Conf Files from /etc/chrony/conf.d/] ***
 skipping: [localhost]
 
@@ -1171,6 +1103,21 @@ TASK [/stigforge/roles/ubuntu22_stig : Deduplicate values from /etc/chrony/chron
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Insert correct line to /etc/chrony/chrony.conf] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Set SSH Client Alive Count Max - Check if the parameter ClientAliveCountMax is configured in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Set SSH Client Alive Count Max - Check if the parameter ClientAliveCountMax is configured in /etc/ssh/sshd_config.d] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Set SSH Client Alive Count Max - Check if /etc/ssh/sshd_config exists] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Set SSH Client Alive Count Max - Check if the parameter ClientAliveCountMax is configured correctly in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Set SSH Client Alive Count Max - Check if the parameter ClientAliveCountMax is configured correctly in /etc/ssh/sshd_config.d] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Deduplicate values from /etc/ssh/sshd_config] ***
@@ -1191,6 +1138,21 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Set SSH Client Alive Count Max - set file mode for /etc/ssh/sshd_config.d/00-complianceascode-hardening.conf] ***
 skipping: [localhost]
 
+TASK [/stigforge/roles/ubuntu22_stig : Set SSH Client Alive Interval - Check if the parameter ClientAliveInterval is configured in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Set SSH Client Alive Interval - Check if the parameter ClientAliveInterval is configured in /etc/ssh/sshd_config.d] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Set SSH Client Alive Interval - Check if /etc/ssh/sshd_config exists] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Set SSH Client Alive Interval - Check if the parameter ClientAliveInterval is configured correctly in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Set SSH Client Alive Interval - Check if the parameter ClientAliveInterval is configured correctly in /etc/ssh/sshd_config.d] ***
+skipping: [localhost]
+
 TASK [/stigforge/roles/ubuntu22_stig : Deduplicate values from /etc/ssh/sshd_config] ***
 skipping: [localhost]
 
@@ -1207,6 +1169,21 @@ TASK [/stigforge/roles/ubuntu22_stig : Insert correct line to /etc/ssh/sshd_conf
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Set SSH Client Alive Interval - set file mode for /etc/ssh/sshd_config.d/00-complianceascode-hardening.conf] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Disable SSH Access via Empty Passwords - Check if the parameter PermitEmptyPasswords is configured in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Disable SSH Access via Empty Passwords - Check if the parameter PermitEmptyPasswords is configured in /etc/ssh/sshd_config.d] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Disable SSH Access via Empty Passwords - Check if /etc/ssh/sshd_config exists] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Disable SSH Access via Empty Passwords - Check if the parameter PermitEmptyPasswords is configured correctly in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Disable SSH Access via Empty Passwords - Check if the parameter PermitEmptyPasswords is configured correctly in /etc/ssh/sshd_config.d] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Deduplicate values from /etc/ssh/sshd_config] ***
@@ -1227,6 +1204,21 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Disable SSH Access via Empty Passwords - set file mode for /etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf] ***
 skipping: [localhost]
 
+TASK [/stigforge/roles/ubuntu22_stig : Disable X11 Forwarding - Check if the parameter X11Forwarding is configured in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Disable X11 Forwarding - Check if the parameter X11Forwarding is configured in /etc/ssh/sshd_config.d] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Disable X11 Forwarding - Check if /etc/ssh/sshd_config exists] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Disable X11 Forwarding - Check if the parameter X11Forwarding is configured correctly in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Disable X11 Forwarding - Check if the parameter X11Forwarding is configured correctly in /etc/ssh/sshd_config.d] ***
+skipping: [localhost]
+
 TASK [/stigforge/roles/ubuntu22_stig : Deduplicate values from /etc/ssh/sshd_config] ***
 skipping: [localhost]
 
@@ -1243,6 +1235,21 @@ TASK [/stigforge/roles/ubuntu22_stig : Insert correct line to /etc/ssh/sshd_conf
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Disable X11 Forwarding - set file mode for /etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Do Not Allow SSH Environment Options - Check if the parameter PermitUserEnvironment is configured in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Do Not Allow SSH Environment Options - Check if the parameter PermitUserEnvironment is configured in /etc/ssh/sshd_config.d] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Do Not Allow SSH Environment Options - Check if /etc/ssh/sshd_config exists] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Do Not Allow SSH Environment Options - Check if the parameter PermitUserEnvironment is configured correctly in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Do Not Allow SSH Environment Options - Check if the parameter PermitUserEnvironment is configured correctly in /etc/ssh/sshd_config.d] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Deduplicate values from /etc/ssh/sshd_config] ***
@@ -1263,6 +1270,21 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Do Not Allow SSH Environment Options - set file mode for /etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf] ***
 skipping: [localhost]
 
+TASK [/stigforge/roles/ubuntu22_stig : Enable PAM - Check if the parameter UsePAM is configured in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Enable PAM - Check if the parameter UsePAM is configured in /etc/ssh/sshd_config.d] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Enable PAM - Check if /etc/ssh/sshd_config exists] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Enable PAM - Check if the parameter UsePAM is configured correctly in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Enable PAM - Check if the parameter UsePAM is configured correctly in /etc/ssh/sshd_config.d] ***
+skipping: [localhost]
+
 TASK [/stigforge/roles/ubuntu22_stig : Deduplicate values from /etc/ssh/sshd_config] ***
 skipping: [localhost]
 
@@ -1279,6 +1301,21 @@ TASK [/stigforge/roles/ubuntu22_stig : Insert correct line to /etc/ssh/sshd_conf
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Enable PAM - set file mode for /etc/ssh/sshd_config.d/00-complianceascode-hardening.conf] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Enable Public Key Authentication - Check if the parameter PubkeyAuthentication is configured in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Enable Public Key Authentication - Check if the parameter PubkeyAuthentication is configured in /etc/ssh/sshd_config.d] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Enable Public Key Authentication - Check if /etc/ssh/sshd_config exists] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Enable Public Key Authentication - Check if the parameter PubkeyAuthentication is configured correctly in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Enable Public Key Authentication - Check if the parameter PubkeyAuthentication is configured correctly in /etc/ssh/sshd_config.d] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Deduplicate values from /etc/ssh/sshd_config] ***
@@ -1299,6 +1336,21 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Enable Public Key Authentication - set file mode for /etc/ssh/sshd_config.d/00-complianceascode-hardening.conf] ***
 skipping: [localhost]
 
+TASK [/stigforge/roles/ubuntu22_stig : Enable SSH Warning Banner - Check if the parameter Banner is configured in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Enable SSH Warning Banner - Check if the parameter Banner is configured in /etc/ssh/sshd_config.d] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Enable SSH Warning Banner - Check if /etc/ssh/sshd_config exists] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Enable SSH Warning Banner - Check if the parameter Banner is configured correctly in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Enable SSH Warning Banner - Check if the parameter Banner is configured correctly in /etc/ssh/sshd_config.d] ***
+skipping: [localhost]
+
 TASK [/stigforge/roles/ubuntu22_stig : Deduplicate values from /etc/ssh/sshd_config] ***
 skipping: [localhost]
 
@@ -1315,6 +1367,21 @@ TASK [/stigforge/roles/ubuntu22_stig : Insert correct line to /etc/ssh/sshd_conf
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Enable SSH Warning Banner - set file mode for /etc/ssh/sshd_config.d/00-complianceascode-hardening.conf] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Use Only FIPS 140-2 Validated Ciphers - Check if the parameter Ciphers is configured in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Use Only FIPS 140-2 Validated Ciphers - Check if the parameter Ciphers is configured in /etc/ssh/sshd_config.d] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Use Only FIPS 140-2 Validated Ciphers - Check if /etc/ssh/sshd_config exists] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Use Only FIPS 140-2 Validated Ciphers - Check if the parameter Ciphers is configured correctly in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Use Only FIPS 140-2 Validated Ciphers - Check if the parameter Ciphers is configured correctly in /etc/ssh/sshd_config.d] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Deduplicate values from /etc/ssh/sshd_config] ***
@@ -1335,7 +1402,52 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Use Only FIPS 140-2 Validated Ciphers - set file mode for /etc/ssh/sshd_config.d/00-complianceascode-hardening.conf] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Configure sshd to use FIPS 140-2 approved key exchange algorithms] ***
+TASK [/stigforge/roles/ubuntu22_stig : Use Only FIPS 140-2 Validated Key Exchange Algorithms - Check if the parameter KexAlgorithms is configured in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Use Only FIPS 140-2 Validated Key Exchange Algorithms - Check if the parameter KexAlgorithms is configured in /etc/ssh/sshd_config.d] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Use Only FIPS 140-2 Validated Key Exchange Algorithms - Check if /etc/ssh/sshd_config exists] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Use Only FIPS 140-2 Validated Key Exchange Algorithms - Check if the parameter KexAlgorithms is configured correctly in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Use Only FIPS 140-2 Validated Key Exchange Algorithms - Check if the parameter KexAlgorithms is configured correctly in /etc/ssh/sshd_config.d] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Deduplicate values from /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Check if /etc/ssh/sshd_config.d exists] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Check if the parameter KexAlgorithms is present in /etc/ssh/sshd_config.d] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Remove parameter from files in /etc/ssh/sshd_config.d] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Insert correct line to /etc/ssh/sshd_config.d/00-complianceascode-hardening.conf] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Use Only FIPS 140-2 Validated Key Exchange Algorithms - set file mode for /etc/ssh/sshd_config.d/00-complianceascode-hardening.conf] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Use Only FIPS 140-2 Validated MACs - Check if the parameter Macs is configured in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Use Only FIPS 140-2 Validated MACs - Check if the parameter Macs is configured in /etc/ssh/sshd_config.d] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Use Only FIPS 140-2 Validated MACs - Check if /etc/ssh/sshd_config exists] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Use Only FIPS 140-2 Validated MACs - Check if the parameter Macs is configured correctly in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Use Only FIPS 140-2 Validated MACs - Check if the parameter Macs is configured correctly in /etc/ssh/sshd_config.d] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Deduplicate values from /etc/ssh/sshd_config] ***
@@ -1356,6 +1468,21 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Use Only FIPS 140-2 Validated MACs - set file mode for /etc/ssh/sshd_config.d/00-complianceascode-hardening.conf] ***
 skipping: [localhost]
 
+TASK [/stigforge/roles/ubuntu22_stig : Prevent remote hosts from connecting to the proxy display - Check if the parameter X11UseLocalhost is configured in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Prevent remote hosts from connecting to the proxy display - Check if the parameter X11UseLocalhost is configured in /etc/ssh/sshd_config.d] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Prevent remote hosts from connecting to the proxy display - Check if /etc/ssh/sshd_config exists] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Prevent remote hosts from connecting to the proxy display - Check if the parameter X11UseLocalhost is configured correctly in /etc/ssh/sshd_config] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Prevent remote hosts from connecting to the proxy display - Check if the parameter X11UseLocalhost is configured correctly in /etc/ssh/sshd_config.d] ***
+skipping: [localhost]
+
 TASK [/stigforge/roles/ubuntu22_stig : Deduplicate values from /etc/ssh/sshd_config] ***
 skipping: [localhost]
 
@@ -1374,21 +1501,79 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Prevent remote hosts from connecting to the proxy display - set file mode for /etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Test for domain group] ******************
+TASK [/stigforge/roles/ubuntu22_stig : Configure PAM in SSSD Services - Ensure sssd config directory exists] ***
+changed: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Configure PAM in SSSD Services - Test for domain group in main config] ***
+ok: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Configure PAM in SSSD Services - Test for domain group in conf.d] ***
+ok: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Configure PAM in SSSD Services - Add default domain group (if no domain there)] ***
+changed: [localhost] => (item={'section': 'sssd', 'option': 'domains', 'value': 'default'})
+changed: [localhost] => (item={'section': 'domain/default', 'option': 'id_provider', 'value': 'files'})
+
+TASK [/stigforge/roles/ubuntu22_stig : Configure PAM in SSSD Services - Find all the conf files inside the /etc/sssd/conf.d directory] ***
+ok: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Configure PAM in SSSD Services - Modify lines in files in the /etc/sssd/conf.d directory] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Add default domain group (if no domain there)] ***
+TASK [/stigforge/roles/ubuntu22_stig : Configure PAM in SSSD Services - Find /etc/sssd/sssd.conf] ***
+ok: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Configure PAM in SSSD Services - Modify lines in /etc/sssd/sssd.conf] ***
+ok: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Configure PAM in SSSD Services - Find services key in /etc/sssd/sssd.conf] ***
+ok: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Configure PAM in SSSD Services - Insert entry to /etc/sssd/sssd.conf] ***
+changed: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Configure SSSD to Expire Offline Credentials - Ensure sssd config directory exists] ***
+ok: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Configure SSSD to Expire Offline Credentials - Test for domain group in main config] ***
+ok: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Configure SSSD to Expire Offline Credentials - Test for domain group in conf.d] ***
+ok: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Configure SSSD to Expire Offline Credentials - Add default domain group (if no domain there)] ***
 skipping: [localhost] => (item={'section': 'sssd', 'option': 'domains', 'value': 'default'}) 
 skipping: [localhost] => (item={'section': 'domain/default', 'option': 'id_provider', 'value': 'files'}) 
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Configure SSD to Expire Offline Credentials] ***
+changed: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Find all the conf files inside /etc/sssd/conf.d] ***
+ok: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Fix offline_credentials_expiration configuration in /etc/sssd/conf.d] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Find all the conf files inside /etc/sssd/conf.d/] ***
+TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects Changes to Cron Jobs - /etc/cron.d/ - Check if watch rule for /etc/cron.d/ already exists in /etc/audit/rules.d/] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Fix offline_credentials_expiration configuration in /etc/sssd/conf.d/] ***
+TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects Changes to Cron Jobs - /etc/cron.d/ - Search /etc/audit/rules.d for other rules with specified key cronjobs] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects Changes to Cron Jobs - /etc/cron.d/ - Use /etc/audit/rules.d/cronjobs.rules as the recipient for the rule] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects Changes to Cron Jobs - /etc/cron.d/ - Use matched file as the recipient for the rule] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects Changes to Cron Jobs - /etc/cron.d/ - Add watch rule for /etc/cron.d/ in /etc/audit/rules.d/] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects Changes to Cron Jobs - /etc/cron.d/ - Check if watch rule for /etc/cron.d/ already exists in /etc/audit/audit.rules] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects Changes to Cron Jobs - /etc/cron.d/ - Add watch rule for /etc/cron.d/ in /etc/audit/audit.rules] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Record Attempts to Alter Process and Session Initiation Information btmp - Check if watch rule for /var/log/btmp already exists in /etc/audit/rules.d/] ***
@@ -1574,10 +1759,10 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Record Events that Modify User/Group Information - /etc/passwd - Check if watch rule for /etc/passwd already exists in /etc/audit/rules.d/] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Record Events that Modify User/Group Information - /etc/passwd - Search /etc/audit/rules.d for other rules with specified key audit_rules_usergroup_modification_passwd] ***
+TASK [/stigforge/roles/ubuntu22_stig : Record Events that Modify User/Group Information - /etc/passwd - Search /etc/audit/rules.d for other rules with specified key audit_rules_usergroup_modification] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Record Events that Modify User/Group Information - /etc/passwd - Use /etc/audit/rules.d/audit_rules_usergroup_modification_passwd.rules as the recipient for the rule] ***
+TASK [/stigforge/roles/ubuntu22_stig : Record Events that Modify User/Group Information - /etc/passwd - Use /etc/audit/rules.d/audit_rules_usergroup_modification.rules as the recipient for the rule] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Record Events that Modify User/Group Information - /etc/passwd - Use matched file as the recipient for the rule] ***
@@ -1616,10 +1801,10 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects records for events that affect "/var/log/journal" - Check if watch rule for /var/log/journal/ already exists in /etc/audit/rules.d/] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects records for events that affect "/var/log/journal" - Search /etc/audit/rules.d for other rules with specified key audit_rules_var_log_journal] ***
+TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects records for events that affect "/var/log/journal" - Search /etc/audit/rules.d for other rules with specified key systemd_journal] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects records for events that affect "/var/log/journal" - Use /etc/audit/rules.d/audit_rules_var_log_journal.rules as the recipient for the rule] ***
+TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects records for events that affect "/var/log/journal" - Use /etc/audit/rules.d/systemd_journal.rules as the recipient for the rule] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects records for events that affect "/var/log/journal" - Use matched file as the recipient for the rule] ***
@@ -1632,6 +1817,27 @@ TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects records for events
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects records for events that affect "/var/log/journal" - Add watch rule for /var/log/journal/ in /etc/audit/audit.rules] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects Changes to Cron Jobs - /var/spool/cron - Check if watch rule for /var/spool/cron already exists in /etc/audit/rules.d/] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects Changes to Cron Jobs - /var/spool/cron - Search /etc/audit/rules.d for other rules with specified key cronjobs] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects Changes to Cron Jobs - /var/spool/cron - Use /etc/audit/rules.d/cronjobs.rules as the recipient for the rule] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects Changes to Cron Jobs - /var/spool/cron - Use matched file as the recipient for the rule] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects Changes to Cron Jobs - /var/spool/cron - Add watch rule for /var/spool/cron in /etc/audit/rules.d/] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects Changes to Cron Jobs - /var/spool/cron - Check if watch rule for /var/spool/cron already exists in /etc/audit/audit.rules] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects Changes to Cron Jobs - /var/spool/cron - Add watch rule for /var/spool/cron in /etc/audit/audit.rules] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Record Attempts to perform maintenance activities - Check if watch rule for /var/log/sudo.log already exists in /etc/audit/rules.d/] ***
@@ -1653,6 +1859,21 @@ TASK [/stigforge/roles/ubuntu22_stig : Record Attempts to perform maintenance ac
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Record Attempts to perform maintenance activities - Add watch rule for /var/log/sudo.log in /etc/audit/audit.rules] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : System Audit Logs Must Have Mode 0750 or Less Permissive - Get audit log file from /etc/audit/auditd.conf] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : System Audit Logs Must Have Mode 0750 or Less Permissive - Set audit log directory path] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : System Audit Logs Must Have Mode 0750 or Less Permissive - Get audit log group from /etc/audit/auditd.conf] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : System Audit Logs Must Have Mode 0750 or Less Permissive - Set audit log group] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : System Audit Logs Must Have Mode 0750 or Less Permissive - Set audit log directory permissions] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Set the file_groupownership_audit_configuration_newgroup variable if represented by gid] ***
@@ -6032,7 +6253,7 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Add the audit rule to {{ audit_file }}] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Set architecture for audit delete_module tasks] ***
+TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects Information on Kernel Module Unloading - delete_module - Set architecture for audit ['delete_module'] tasks] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Declare list of syscalls] ***************
@@ -6056,7 +6277,7 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Get path with most syscalls] ************
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : No file with syscall found, set path to /etc/audit/rules.d/module-change.rules] ***
+TASK [/stigforge/roles/ubuntu22_stig : No file with syscall found, set path to /etc/audit/rules.d/modules.rules] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Declare found syscalls] *****************
@@ -6113,7 +6334,7 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Get path with most syscalls] ************
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : No file with syscall found, set path to /etc/audit/rules.d/module-change.rules] ***
+TASK [/stigforge/roles/ubuntu22_stig : No file with syscall found, set path to /etc/audit/rules.d/modules.rules] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Declare found syscalls] *****************
@@ -6149,7 +6370,7 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Add the audit rule to {{ audit_file }}] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Set architecture for audit finit_module tasks] ***
+TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects Information on Kernel Module Loading and Unloading - finit_module - Set architecture for audit ['finit_module'] tasks] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Declare list of syscalls] ***************
@@ -6173,7 +6394,7 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Get path with most syscalls] ************
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : No file with syscall found, set path to /etc/audit/rules.d/module-change.rules] ***
+TASK [/stigforge/roles/ubuntu22_stig : No file with syscall found, set path to /etc/audit/rules.d/modules.rules] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Declare found syscalls] *****************
@@ -6230,7 +6451,7 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Get path with most syscalls] ************
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : No file with syscall found, set path to /etc/audit/rules.d/module-change.rules] ***
+TASK [/stigforge/roles/ubuntu22_stig : No file with syscall found, set path to /etc/audit/rules.d/modules.rules] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Declare found syscalls] *****************
@@ -6266,7 +6487,7 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Add the audit rule to {{ audit_file }}] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Set architecture for audit init_module tasks] ***
+TASK [/stigforge/roles/ubuntu22_stig : Ensure auditd Collects Information on Kernel Module Loading - init_module - Set architecture for audit ['init_module'] tasks] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Declare list of syscalls] ***************
@@ -6290,7 +6511,7 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Get path with most syscalls] ************
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : No file with syscall found, set path to /etc/audit/rules.d/module-change.rules] ***
+TASK [/stigforge/roles/ubuntu22_stig : No file with syscall found, set path to /etc/audit/rules.d/modules.rules] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Declare found syscalls] *****************
@@ -6347,7 +6568,7 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Get path with most syscalls] ************
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : No file with syscall found, set path to /etc/audit/rules.d/module-change.rules] ***
+TASK [/stigforge/roles/ubuntu22_stig : No file with syscall found, set path to /etc/audit/rules.d/modules.rules] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Declare found syscalls] *****************
@@ -7565,16 +7786,28 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Ensure owner on /sbin/auditd] ***********
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Test for existence /sbin/audispd] *******
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Ensure owner on /sbin/audispd] **********
-skipping: [localhost]
-
 TASK [/stigforge/roles/ubuntu22_stig : Test for existence /sbin/augenrules] ****
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure owner on /sbin/augenrules] *******
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Test for existence /sbin/audisp-syslog] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure owner on /sbin/audisp-syslog] ****
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Test for existence /sbin/audisp-remote] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure owner on /sbin/audisp-remote] ****
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Test for existence /sbin/audispd-zos-remote] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure owner on /sbin/audispd-zos-remote] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Test for existence /sbin/auditctl] ******
@@ -7607,16 +7840,28 @@ skipping: [localhost]
 TASK [/stigforge/roles/ubuntu22_stig : Ensure permission u-s,g-ws,o-wt on /sbin/auditd] ***
 skipping: [localhost]
 
-TASK [/stigforge/roles/ubuntu22_stig : Test for existence /sbin/audispd] *******
-skipping: [localhost]
-
-TASK [/stigforge/roles/ubuntu22_stig : Ensure permission u-s,g-ws,o-wt on /sbin/audispd] ***
-skipping: [localhost]
-
 TASK [/stigforge/roles/ubuntu22_stig : Test for existence /sbin/augenrules] ****
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Ensure permission u-s,g-ws,o-wt on /sbin/augenrules] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Test for existence /sbin/audisp-syslog] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure permission u-s,g-ws,o-wt on /sbin/audisp-syslog] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Test for existence /sbin/audisp-remote] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure permission u-s,g-ws,o-wt on /sbin/audisp-remote] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Test for existence /sbin/audispd-zos-remote] ***
+skipping: [localhost]
+
+TASK [/stigforge/roles/ubuntu22_stig : Ensure permission u-s,g-ws,o-wt on /sbin/audispd-zos-remote] ***
 skipping: [localhost]
 
 TASK [/stigforge/roles/ubuntu22_stig : Test for existence /etc/audit/auditd.conf] ***
@@ -7687,5 +7932,5 @@ TASK [/stigforge/roles/ubuntu22_stig : StigForge supplement - ensure group owner
 changed: [localhost]
 
 PLAY RECAP *********************************************************************
-localhost                  : ok=127  changed=43   unreachable=0    failed=0    skipped=2425 rescued=1    ignored=1   
+localhost                  : ok=96   changed=23   unreachable=0    failed=0    skipped=2541 rescued=1    ignored=1   
 

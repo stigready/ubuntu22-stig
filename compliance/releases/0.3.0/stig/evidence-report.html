@@ -35,24 +35,24 @@ a{color:var(--accent)}
     <span class="pill pass">pass</span>
     <span>commit <code>—</code></span>
     <span>—</span>
-    <span>built 20260729T223213Z</span>
+    <span>built 20260912T130456Z</span>
   </div>
   <div class="tiles">
-    <div class="tile"><div class="k">OpenSCAP</div><div class="v">100.0%</div></div>
+    <div class="tile"><div class="k">OpenSCAP</div><div class="v">94.12%</div></div>
     <div class="tile"><div class="k">Floor</div><div class="v">90.0%</div></div>
     <div class="tile"><div class="k">Ansible rc</div><div class="v">0</div></div>
   </div>
   <section><h2>OpenSCAP gate</h2>
     <div class="card">
-      47 pass / 0 fail — score <b>100.0%</b> (floor 90.0%)
+      32 pass / 2 fail — score <b>94.12%</b> (floor 90.0%)
       <div style="height:6px;background:var(--line);border-radius:4px;margin-top:8px;max-width:320px">
-        <div style="width:100%;height:100%;background:var(--pass)"></div>
+        <div style="width:94%;height:100%;background:var(--pass)"></div>
       </div>
     </div>
   </section>
   <section><h2>Artifacts</h2>
     <table><thead><tr><th>Artifact</th><th>Path</th><th>Size</th></tr></thead>
-    <tbody><tr><td>OpenSCAP score summary (JSON)<br><small>pass/fail counts, floor gate, failure rule ids</small></td><td><code>score.json</code></td><td>300 B</td></tr><tr><td>OpenSCAP results (XCCDF)<br><small>machine-readable per-rule results</small></td><td><code>results.xml</code></td><td>9 MB</td></tr><tr><td>OpenSCAP ARF<br><small>Asset Reporting Format — POA&amp;M source (stigready parity)</small></td><td><code>arf.xml</code></td><td>17 MB</td></tr><tr><td>OpenSCAP report (HTML)<br><small>human-readable SSG scorecard</small></td><td><code>report.html</code></td><td>2 MB</td></tr><tr><td>OpenSCAP score line<br><small>gate stdout shape for log parsing</small></td><td><code>openscap-score.txt</code></td><td>51 B</td></tr><tr><td>POA&amp;M<br><small>failures + policy-exempt inventory</small></td><td><code>poam.md</code></td><td>1 KB</td></tr><tr><td>Ansible apply log<br><small>role application inside verify container</small></td><td><code>ansible.log</code></td><td>299 KB</td></tr><tr><td>Ansible exit code<br><small>apply return code (oscap still runs)</small></td><td><code>ansible.rc</code></td><td>13 B</td></tr><tr><td>OpenSCAP exit code<br><small>oscap xccdf eval return code</small></td><td><code>oscap.rc</code></td><td>11 B</td></tr><tr><td>Score gate stdout<br><small>stigforge score CLI output</small></td><td><code>score.stdout</code></td><td>300 B</td></tr></tbody></table>
+    <tbody><tr><td>OpenSCAP score summary (JSON)<br><small>pass/fail counts, floor gate, failure rule ids</small></td><td><code>score.json</code></td><td>374 B</td></tr><tr><td>OpenSCAP results (XCCDF)<br><small>machine-readable per-rule results</small></td><td><code>results.xml</code></td><td>8 MB</td></tr><tr><td>OpenSCAP ARF<br><small>Asset Reporting Format — POA&amp;M source (stigready parity)</small></td><td><code>arf.xml</code></td><td>16 MB</td></tr><tr><td>OpenSCAP score line<br><small>gate stdout shape for log parsing</small></td><td><code>openscap-score.txt</code></td><td>50 B</td></tr><tr><td>POA&amp;M<br><small>failures + policy-exempt inventory</small></td><td><code>poam.md</code></td><td>1 KB</td></tr><tr><td>Ansible apply log<br><small>role application inside verify container</small></td><td><code>ansible.log</code></td><td>313 KB</td></tr><tr><td>Ansible exit code<br><small>apply return code (oscap still runs)</small></td><td><code>ansible.rc</code></td><td>13 B</td></tr><tr><td>OpenSCAP exit code<br><small>oscap xccdf eval return code</small></td><td><code>oscap.rc</code></td><td>11 B</td></tr><tr><td>Score gate stdout<br><small>stigforge score CLI output</small></td><td><code>score.stdout</code></td><td>374 B</td></tr></tbody></table>
   </section>
   <footer>
     Rendered from <code>evidence.json</code> · StigForge verify harness ·

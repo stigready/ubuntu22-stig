@@ -3,11 +3,14 @@
 StigForge docker verify (OpenSCAP). Policy-exempt rules are excluded from the score denominator.
 Failure buckets follow stigready `poam-from-arf.py` classification (N/A / risk-accepted / gap).
 
-**Score:** 100.0% (floor 90.0%) — meets floor
+**Score:** 94.12% (floor 90.0%) — meets floor
 
-## OpenSCAP failures — classified (0)
+## OpenSCAP failures — classified (2)
 
-_None — all scored rules pass._
+### N/A - no central directory / smartcard (SSSD, CAC) in cloud base (2)
+
+- `sssd_certification_path_trust_anchor`
+- `sssd_enable_user_cert`
 
 ## Policy exempt — not scored (32)
 

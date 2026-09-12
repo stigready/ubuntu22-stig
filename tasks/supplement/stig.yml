@@ -1,5 +1,5 @@
 # StigForge supplements for Ubuntu 22.04 STIG — not overwritten by `stigforge generate`.
-# Every rule below has NO ansible remediation in ComplianceAsCode/content 0.1.78's
+# Every rule below has NO ansible remediation in ComplianceAsCode/content 0.1.82's
 # ubuntu2204-playbook-stig.yml (confirmed by regenerating the fix directly from the
 # datastream with `oscap xccdf generate fix`, not just the pre-built release zip) —
 # these are genuine upstream SSG coverage gaps for this product, not StigForge filtering.
@@ -171,7 +171,7 @@
 # NOTE (tracked, not silently dropped): banner_etc_profiled_ssh_confirm's OVAL check
 # compiles the `var_ssh_confirm_text` Value directly as a PCRE pattern-match against
 # /etc/profile.d/*.sh. Confirmed via `oscap xccdf generate fix --fix-type bash` against
-# ssg-ubuntu2204-ds.xml (0.1.78) that upstream's OWN bash fix template is broken: its
+# ssg-ubuntu2204-ds.xml (0.1.82) that upstream's OWN bash fix template is broken: its
 # step-2 `sed 's/(?:\[\\n\]+|(?:\\n)+)/\n/g'` never matches the Value's actual escaping
 # (GNU sed on the same base image leaves literal `(?:[n]+|(?:n)+)` tokens in the
 # generated /etc/profile.d/ssh_confirm.sh — i.e. running ComplianceAsCode's own

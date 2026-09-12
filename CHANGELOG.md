@@ -2,6 +2,21 @@
 
 Format based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.3.0] - 2026-09-12
+
+### Changed
+- StigForge export refresh for `ubuntu22_stig` at `0.3.0`.
+
+### Verified (OpenSCAP)
+
+- **`stig`** — score **94.12%** (floor 90.0%) · gate **PASS** · evidence `20260912T130456Z`
+  - Remaining counted failures: `sssd_certification_path_trust_anchor, sssd_enable_user_cert`
+
+### Provenance
+
+- Factory pipeline: https://github.com/stigready/stigforge/actions/runs/34693316989
+- Factory commit: `562a1f7c1a8e19235ee26e972174d1be6c88998c`
+
 ## [0.2.4] - 2026-07-30
 
 ### Changed
