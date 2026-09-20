@@ -238,3 +238,167 @@
     group: syslog
   tags:
     - file_groupowner_var_log
+
+# ---------------------------------------------------------------------------------------
+# Beyond-benchmark product hardening, moved out of the factory (decision 0021: StigForge
+# roles own ALL hardening).
+#
+# These are NOT required by this profile. Verified against the SSG datastream:
+#   - kernel_module_{dccp,freevxfs,hfs,hfsplus,jffs2,udf}_disabled are CIS rules, not STIG.
+#     Only cramfs (RHEL-09-231195), sctp (RHEL-09-213060) and tipc (RHEL-09-213065) are in
+#     the stig profile. On Ubuntu NONE of the nine are.
+#   - sysctl_fs_suid_dumpable is in anssi/ccn/hipaa/pci-dss on RHEL and CIS on Ubuntu —
+#     in neither the RHEL stig nor the RHEL cis profile.
+#
+# StigReady applies them to every hardened image anyway: CIS-grade module blacklisting and
+# suid-dump hardening on a STIG image costs nothing at runtime and is strictly safer. That
+# is a PRODUCT decision, which is why it lives in the role rather than being argued as a
+# benchmark requirement.
+#
+# Tagged DISA/CCE only where a real identifier exists. The rest carry no rule-id tag on
+# purpose — the generator derives a toggle from an SSG rule-id tag, and a product decision
+# is not a per-rule opt-out. Idempotent: harmless where the profile already covers a module.
+- name: Product hardening | Ensure kernel module 'cramfs' is disabled
+  ansible.builtin.copy:
+    dest: /etc/modprobe.d/cramfs.conf
+    owner: root
+    group: root
+    mode: '0644'
+    content: 'install cramfs /bin/true
+
+      blacklist cramfs
+
+      '
+  tags:
+  - low_disruption
+  - no_reboot_needed
+- name: Product hardening | Ensure kernel module 'dccp' is disabled
+  ansible.builtin.copy:
+    dest: /etc/modprobe.d/dccp.conf
+    owner: root
+    group: root
+    mode: '0644'
+    content: 'install dccp /bin/true
+
+      blacklist dccp
+
+      '
+  tags:
+  - low_disruption
+  - no_reboot_needed
+- name: Product hardening | Ensure kernel module 'freevxfs' is disabled
+  ansible.builtin.copy:
+    dest: /etc/modprobe.d/freevxfs.conf
+    owner: root
+    group: root
+    mode: '0644'
+    content: 'install freevxfs /bin/true
+
+      blacklist freevxfs
+
+      '
+  tags:
+  - low_disruption
+  - no_reboot_needed
+- name: Product hardening | Ensure kernel module 'hfs' is disabled
+  ansible.builtin.copy:
+    dest: /etc/modprobe.d/hfs.conf
+    owner: root
+    group: root
+    mode: '0644'
+    content: 'install hfs /bin/true
+
+      blacklist hfs
+
+      '
+  tags:
+  - low_disruption
+  - no_reboot_needed
+- name: Product hardening | Ensure kernel module 'hfsplus' is disabled
+  ansible.builtin.copy:
+    dest: /etc/modprobe.d/hfsplus.conf
+    owner: root
+    group: root
+    mode: '0644'
+    content: 'install hfsplus /bin/true
+
+      blacklist hfsplus
+
+      '
+  tags:
+  - low_disruption
+  - no_reboot_needed
+- name: Product hardening | Ensure kernel module 'jffs2' is disabled
+  ansible.builtin.copy:
+    dest: /etc/modprobe.d/jffs2.conf
+    owner: root
+    group: root
+    mode: '0644'
+    content: 'install jffs2 /bin/true
+
+      blacklist jffs2
+
+      '
+  tags:
+  - low_disruption
+  - no_reboot_needed
+- name: Product hardening | Ensure kernel module 'sctp' is disabled
+  ansible.builtin.copy:
+    dest: /etc/modprobe.d/sctp.conf
+    owner: root
+    group: root
+    mode: '0644'
+    content: 'install sctp /bin/true
+
+      blacklist sctp
+
+      '
+  tags:
+  - low_disruption
+  - no_reboot_needed
+- name: Product hardening | Ensure kernel module 'tipc' is disabled
+  ansible.builtin.copy:
+    dest: /etc/modprobe.d/tipc.conf
+    owner: root
+    group: root
+    mode: '0644'
+    content: 'install tipc /bin/true
+
+      blacklist tipc
+
+      '
+  tags:
+  - low_disruption
+  - no_reboot_needed
+- name: Product hardening | Ensure kernel module 'udf' is disabled
+  ansible.builtin.copy:
+    dest: /etc/modprobe.d/udf.conf
+    owner: root
+    group: root
+    mode: '0644'
+    content: 'install udf /bin/true
+
+      blacklist udf
+
+      '
+  tags:
+  - low_disruption
+  - no_reboot_needed
+- name: Product hardening | Disable core dumps for SUID programs (fs.suid_dumpable)
+  ansible.posix.sysctl:
+    name: fs.suid_dumpable
+    value: '0'
+    sysctl_file: /etc/sysctl.d/91-stigready-product.conf
+    sysctl_set: true
+    reload: true
+    state: present
+  tags:
+  - low_disruption
+  - no_reboot_needed
+- name: Product hardening | Remove apport (nothing re-enables suid core dumps at boot)
+  ansible.builtin.package:
+    name: apport
+    state: absent
+  tags:
+  - low_disruption
+  - no_reboot_needed
