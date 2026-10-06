@@ -1,11 +1,11 @@
-# StigForge supplements for Ubuntu 22.04 STIG — not overwritten by `stigforge generate`.
+# StigForge supplements for Ubuntu 22.04 STIG - not overwritten by `stigforge generate`.
 # Every rule below has NO ansible remediation in ComplianceAsCode/content 0.1.82's
 # ubuntu2204-playbook-stig.yml (confirmed by regenerating the fix directly from the
-# datastream with `oscap xccdf generate fix`, not just the pre-built release zip) —
+# datastream with `oscap xccdf generate fix`, not just the pre-built release zip) -
 # these are genuine upstream SSG coverage gaps for this product, not StigForge filtering.
 # Target values below are the "stig" profile's own <xccdf:refine-value> selections (or
 # the Value element's unselected default when the stig profile doesn't refine it) read
-# directly out of ssg-ubuntu2204-ds.xml — not invented.
+# directly out of ssg-ubuntu2204-ds.xml - not invented.
 
 - name: StigForge supplement - set PASS_MAX_DAYS in /etc/login.defs (accounts_maximum_age_login_defs)
   ansible.builtin.lineinfile:
@@ -130,7 +130,7 @@
     - display_login_attempts
 
 # OVAL check (oval:ssg-test_remove_unused_dependencies/kernel_packages) scans
-# /etc/apt/apt.conf* for Unattended-Upgrade::Remove-Unused-* — not APT::Get::* as
+# /etc/apt/apt.conf* for Unattended-Upgrade::Remove-Unused-* - not APT::Get::* as
 # the human-readable rule description implies; confirmed by reading the datastream's
 # textfilecontent54_object pattern directly rather than guessing from prose.
 - name: StigForge supplement - configure apt to remove unused dependencies and kernels after upgrade (clean_components_post_updating)
@@ -151,7 +151,7 @@
     - clean_components_post_updating
 
 # file_groupowner_var_log's OVAL check (oval:ssg-file_groupowner_var_log:def:1) requires
-# /var/log/ group-owned specifically by "syslog" — unlike its sibling rule
+# /var/log/ group-owned specifically by "syslog" - unlike its sibling rule
 # file_groupowner_var_log_syslog (for /var/log/syslog the *file*), which accepts
 # adm or root as a fallback. Upstream's own remediation for this rule only sets
 # file_groupowner_var_log_newgroup when the "syslog" group already exists (via
@@ -174,11 +174,11 @@
 # ssg-ubuntu2204-ds.xml (0.1.82) that upstream's OWN bash fix template is broken: its
 # step-2 `sed 's/(?:\[\\n\]+|(?:\\n)+)/\n/g'` never matches the Value's actual escaping
 # (GNU sed on the same base image leaves literal `(?:[n]+|(?:n)+)` tokens in the
-# generated /etc/profile.d/ssh_confirm.sh — i.e. running ComplianceAsCode's own
+# generated /etc/profile.d/ssh_confirm.sh - i.e. running ComplianceAsCode's own
 # remediation produces a banner that fails its own check). This is an upstream
 # ComplianceAsCode/content defect, not a StigForge gap; we still install a correct,
 # human-readable banner below (real security value) rather than skip it, but do not
-# claim a compliance PASS we can't verify — do not hand-craft content solely to satisfy
+# claim a compliance PASS we can't verify - do not hand-craft content solely to satisfy
 # the raw regex without a local oscap re-scan proving the match, per repo policy against
 # faking green.
 - name: StigForge supplement - install the SSH login confirmation banner script (banner_etc_profiled_ssh_confirm)
@@ -247,7 +247,7 @@
 #   - kernel_module_{dccp,freevxfs,hfs,hfsplus,jffs2,udf}_disabled are CIS rules, not STIG.
 #     Only cramfs (RHEL-09-231195), sctp (RHEL-09-213060) and tipc (RHEL-09-213065) are in
 #     the stig profile. On Ubuntu NONE of the nine are.
-#   - sysctl_fs_suid_dumpable is in anssi/ccn/hipaa/pci-dss on RHEL and CIS on Ubuntu —
+#   - sysctl_fs_suid_dumpable is in anssi/ccn/hipaa/pci-dss on RHEL and CIS on Ubuntu -
 #     in neither the RHEL stig nor the RHEL cis profile.
 #
 # StigReady applies them to every hardened image anyway: CIS-grade module blacklisting and
@@ -256,7 +256,7 @@
 # benchmark requirement.
 #
 # Tagged DISA/CCE only where a real identifier exists. The rest carry no rule-id tag on
-# purpose — the generator derives a toggle from an SSG rule-id tag, and a product decision
+# purpose - the generator derives a toggle from an SSG rule-id tag, and a product decision
 # is not a per-rule opt-out. Idempotent: harmless where the profile already covers a module.
 - name: Product hardening | Ensure kernel module 'cramfs' is disabled
   ansible.builtin.copy:

@@ -1,4 +1,4 @@
-# Source: ComplianceAsCode/content (scap-security-guide) — BSD-3-Clause
+# Source: ComplianceAsCode/content (scap-security-guide) - BSD-3-Clause
 # Imported by StigForge; cloud-breaker tasks stripped per policy/cloud-ami.yml
 ---
 - block:
@@ -30296,3 +30296,226 @@
         an error (module or templating) and was skipped; continuing so later rules still run. OpenSCAP evaluates the resulting
         system state independently.'
   when: (stigforge_rules_enabled | default(true) | bool) and (ubuntu22stig_file_groupowner_var_log | default(true) | bool)
+- block:
+  - name: Product hardening | Ensure kernel module 'cramfs' is disabled
+    ansible.builtin.copy:
+      dest: /etc/modprobe.d/cramfs.conf
+      owner: root
+      group: root
+      mode: '0644'
+      content: 'install cramfs /bin/true
+
+        blacklist cramfs
+
+        '
+    tags:
+    - low_disruption
+    - no_reboot_needed
+  rescue:
+  - name: 'StigForge: continue after error in "Product hardening | Ensure kernel module ''cramfs'' is disabled" (OpenSCAP
+      is the score gate)'
+    ansible.builtin.debug:
+      msg: 'StigForge: "Product hardening | Ensure kernel module ''cramfs'' is disabled" raised an error (module or templating)
+        and was skipped; continuing so later rules still run. OpenSCAP evaluates the resulting system state independently.'
+- block:
+  - name: Product hardening | Ensure kernel module 'dccp' is disabled
+    ansible.builtin.copy:
+      dest: /etc/modprobe.d/dccp.conf
+      owner: root
+      group: root
+      mode: '0644'
+      content: 'install dccp /bin/true
+
+        blacklist dccp
+
+        '
+    tags:
+    - low_disruption
+    - no_reboot_needed
+  rescue:
+  - name: 'StigForge: continue after error in "Product hardening | Ensure kernel module ''dccp'' is disabled" (OpenSCAP is
+      the score gate)'
+    ansible.builtin.debug:
+      msg: 'StigForge: "Product hardening | Ensure kernel module ''dccp'' is disabled" raised an error (module or templating)
+        and was skipped; continuing so later rules still run. OpenSCAP evaluates the resulting system state independently.'
+- block:
+  - name: Product hardening | Ensure kernel module 'freevxfs' is disabled
+    ansible.builtin.copy:
+      dest: /etc/modprobe.d/freevxfs.conf
+      owner: root
+      group: root
+      mode: '0644'
+      content: 'install freevxfs /bin/true
+
+        blacklist freevxfs
+
+        '
+    tags:
+    - low_disruption
+    - no_reboot_needed
+  rescue:
+  - name: 'StigForge: continue after error in "Product hardening | Ensure kernel module ''freevxfs'' is disabled" (OpenSCAP
+      is the score gate)'
+    ansible.builtin.debug:
+      msg: 'StigForge: "Product hardening | Ensure kernel module ''freevxfs'' is disabled" raised an error (module or templating)
+        and was skipped; continuing so later rules still run. OpenSCAP evaluates the resulting system state independently.'
+- block:
+  - name: Product hardening | Ensure kernel module 'hfs' is disabled
+    ansible.builtin.copy:
+      dest: /etc/modprobe.d/hfs.conf
+      owner: root
+      group: root
+      mode: '0644'
+      content: 'install hfs /bin/true
+
+        blacklist hfs
+
+        '
+    tags:
+    - low_disruption
+    - no_reboot_needed
+  rescue:
+  - name: 'StigForge: continue after error in "Product hardening | Ensure kernel module ''hfs'' is disabled" (OpenSCAP is
+      the score gate)'
+    ansible.builtin.debug:
+      msg: 'StigForge: "Product hardening | Ensure kernel module ''hfs'' is disabled" raised an error (module or templating)
+        and was skipped; continuing so later rules still run. OpenSCAP evaluates the resulting system state independently.'
+- block:
+  - name: Product hardening | Ensure kernel module 'hfsplus' is disabled
+    ansible.builtin.copy:
+      dest: /etc/modprobe.d/hfsplus.conf
+      owner: root
+      group: root
+      mode: '0644'
+      content: 'install hfsplus /bin/true
+
+        blacklist hfsplus
+
+        '
+    tags:
+    - low_disruption
+    - no_reboot_needed
+  rescue:
+  - name: 'StigForge: continue after error in "Product hardening | Ensure kernel module ''hfsplus'' is disabled" (OpenSCAP
+      is the score gate)'
+    ansible.builtin.debug:
+      msg: 'StigForge: "Product hardening | Ensure kernel module ''hfsplus'' is disabled" raised an error (module or templating)
+        and was skipped; continuing so later rules still run. OpenSCAP evaluates the resulting system state independently.'
+- block:
+  - name: Product hardening | Ensure kernel module 'jffs2' is disabled
+    ansible.builtin.copy:
+      dest: /etc/modprobe.d/jffs2.conf
+      owner: root
+      group: root
+      mode: '0644'
+      content: 'install jffs2 /bin/true
+
+        blacklist jffs2
+
+        '
+    tags:
+    - low_disruption
+    - no_reboot_needed
+  rescue:
+  - name: 'StigForge: continue after error in "Product hardening | Ensure kernel module ''jffs2'' is disabled" (OpenSCAP is
+      the score gate)'
+    ansible.builtin.debug:
+      msg: 'StigForge: "Product hardening | Ensure kernel module ''jffs2'' is disabled" raised an error (module or templating)
+        and was skipped; continuing so later rules still run. OpenSCAP evaluates the resulting system state independently.'
+- block:
+  - name: Product hardening | Ensure kernel module 'sctp' is disabled
+    ansible.builtin.copy:
+      dest: /etc/modprobe.d/sctp.conf
+      owner: root
+      group: root
+      mode: '0644'
+      content: 'install sctp /bin/true
+
+        blacklist sctp
+
+        '
+    tags:
+    - low_disruption
+    - no_reboot_needed
+  rescue:
+  - name: 'StigForge: continue after error in "Product hardening | Ensure kernel module ''sctp'' is disabled" (OpenSCAP is
+      the score gate)'
+    ansible.builtin.debug:
+      msg: 'StigForge: "Product hardening | Ensure kernel module ''sctp'' is disabled" raised an error (module or templating)
+        and was skipped; continuing so later rules still run. OpenSCAP evaluates the resulting system state independently.'
+- block:
+  - name: Product hardening | Ensure kernel module 'tipc' is disabled
+    ansible.builtin.copy:
+      dest: /etc/modprobe.d/tipc.conf
+      owner: root
+      group: root
+      mode: '0644'
+      content: 'install tipc /bin/true
+
+        blacklist tipc
+
+        '
+    tags:
+    - low_disruption
+    - no_reboot_needed
+  rescue:
+  - name: 'StigForge: continue after error in "Product hardening | Ensure kernel module ''tipc'' is disabled" (OpenSCAP is
+      the score gate)'
+    ansible.builtin.debug:
+      msg: 'StigForge: "Product hardening | Ensure kernel module ''tipc'' is disabled" raised an error (module or templating)
+        and was skipped; continuing so later rules still run. OpenSCAP evaluates the resulting system state independently.'
+- block:
+  - name: Product hardening | Ensure kernel module 'udf' is disabled
+    ansible.builtin.copy:
+      dest: /etc/modprobe.d/udf.conf
+      owner: root
+      group: root
+      mode: '0644'
+      content: 'install udf /bin/true
+
+        blacklist udf
+
+        '
+    tags:
+    - low_disruption
+    - no_reboot_needed
+  rescue:
+  - name: 'StigForge: continue after error in "Product hardening | Ensure kernel module ''udf'' is disabled" (OpenSCAP is
+      the score gate)'
+    ansible.builtin.debug:
+      msg: 'StigForge: "Product hardening | Ensure kernel module ''udf'' is disabled" raised an error (module or templating)
+        and was skipped; continuing so later rules still run. OpenSCAP evaluates the resulting system state independently.'
+- block:
+  - name: Product hardening | Disable core dumps for SUID programs (fs.suid_dumpable)
+    ansible.posix.sysctl:
+      name: fs.suid_dumpable
+      value: '0'
+      sysctl_file: /etc/sysctl.d/91-stigready-product.conf
+      sysctl_set: true
+      reload: true
+      state: present
+    tags:
+    - low_disruption
+    - no_reboot_needed
+  rescue:
+  - name: 'StigForge: continue after error in ''Product hardening | Disable core dumps for SUID programs (fs.suid_dumpable)''
+      (OpenSCAP is the score gate)'
+    ansible.builtin.debug:
+      msg: 'StigForge: ''Product hardening | Disable core dumps for SUID programs (fs.suid_dumpable)'' raised an error (module
+        or templating) and was skipped; continuing so later rules still run. OpenSCAP evaluates the resulting system state
+        independently.'
+- block:
+  - name: Product hardening | Remove apport (nothing re-enables suid core dumps at boot)
+    ansible.builtin.package:
+      name: apport
+      state: absent
+    tags:
+    - low_disruption
+    - no_reboot_needed
+  rescue:
+  - name: 'StigForge: continue after error in ''Product hardening | Remove apport (nothing re-enables suid core dumps at boot)''
+      (OpenSCAP is the score gate)'
+    ansible.builtin.debug:
+      msg: 'StigForge: ''Product hardening | Remove apport (nothing re-enables suid core dumps at boot)'' raised an error
+        (module or templating) and was skipped; continuing so later rules still run. OpenSCAP evaluates the resulting system
+        state independently.'
