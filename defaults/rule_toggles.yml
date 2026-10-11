@@ -27,7 +27,6 @@ ubuntu22stig_aide_build_database: true
 ubuntu22stig_aide_check_audit_tools: true
 ubuntu22stig_aide_disable_silentreports: true
 ubuntu22stig_aide_periodic_cron_checking: true
-ubuntu22stig_always: true
 ubuntu22stig_audit_rules_dac_modification_chmod: true
 ubuntu22stig_audit_rules_dac_modification_chown: true
 ubuntu22stig_audit_rules_dac_modification_fchmod: true
