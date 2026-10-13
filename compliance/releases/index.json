@@ -1,6 +1,6 @@
 [
   {
-    "version": "0.3.9",
+    "version": "0.3.10",
     "role": "ubuntu22_stig",
     "matrix_status": "green"
   }
