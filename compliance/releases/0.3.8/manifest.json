@@ -1,11 +1,11 @@
 {
   "role": "ubuntu22_stig",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "factory_repo": "stigready/stigforge",
   "matrix_status": "green",
-  "pipeline_run_id": "38369857016",
-  "factory_commit": "c2e22025f5e6a2a6a6568426bc2f8d7e028c2e08",
-  "content_digest": "0735bf4a1ee7d8de0f8d9cea415b0dfbecc9c8ebbc3faa05fde55cac2d980765",
+  "pipeline_run_id": "38373879352",
+  "factory_commit": "3a1573b60d84fd4d272a44a7dc42fc9150586dfb",
+  "content_digest": "064f3493cc8a17576048dbafab5e9c0c337e7ee47b5623e917fb7ff15510dd70",
   "container_verify": "removed-0017",
   "compliance_evidence": "Not produced here. Container verify was removed by decision 0017 because a container cannot evaluate most STIG rules; compliance evidence for this role comes from the AMI build that consumes it in stigready/stigready."
 }
