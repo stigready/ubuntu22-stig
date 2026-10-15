@@ -1,7 +1,7 @@
-# Review package — `ubuntu22_stig` v0.3.30
+# Review package — `ubuntu22_stig` v0.3.31
 
 Product owner review (Phase B/C pilot). **Not** a StigApplied cutover signal.
 
 ## Evidence (immutable for this release)
 
-- CI pipeline: https://github.com/stigready/stigforge/actions/runs/38812161310
+- CI pipeline: https://github.com/stigready/stigforge/actions/runs/38813990774
