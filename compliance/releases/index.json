@@ -48,5 +48,10 @@
     "version": "0.3.31",
     "role": "ubuntu22_stig",
     "matrix_status": "green"
+  },
+  {
+    "version": "0.3.32",
+    "role": "ubuntu22_stig",
+    "matrix_status": "green"
   }
 ]
