@@ -1,0 +1,9 @@
+{
+  "role": "ubuntu22_stig",
+  "version": "0.3.48",
+  "matrix_status": "green",
+  "factory_commit": "055cf3a4a0bb0069f7b8dfc298fc7075514fb561",
+  "content_digest": "1c5e3be7bcad702d3e206f15eea68ff9ff9f6322d090d884e8b7f0b740632d1c",
+  "container_verify": "removed-0017",
+  "compliance_evidence": "Not produced here. Container verify was removed because a container cannot evaluate most STIG rules; compliance evidence for this role comes from the StigReady AMI build that consumes it."
+}

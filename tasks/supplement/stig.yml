@@ -239,25 +239,6 @@
   tags:
     - file_groupowner_var_log
 
-# ---------------------------------------------------------------------------------------
-# Beyond-benchmark product hardening, moved out of the factory (decision 0021: StigForge
-# roles own ALL hardening).
-#
-# These are NOT required by this profile. Verified against the SSG datastream:
-#   - kernel_module_{dccp,freevxfs,hfs,hfsplus,jffs2,udf}_disabled are CIS rules, not STIG.
-#     Only cramfs (RHEL-09-231195), sctp (RHEL-09-213060) and tipc (RHEL-09-213065) are in
-#     the stig profile. On Ubuntu NONE of the nine are.
-#   - sysctl_fs_suid_dumpable is in anssi/ccn/hipaa/pci-dss on RHEL and CIS on Ubuntu -
-#     in neither the RHEL stig nor the RHEL cis profile.
-#
-# StigReady applies them to every hardened image anyway: CIS-grade module blacklisting and
-# suid-dump hardening on a STIG image costs nothing at runtime and is strictly safer. That
-# is a PRODUCT decision, which is why it lives in the role rather than being argued as a
-# benchmark requirement.
-#
-# Tagged DISA/CCE only where a real identifier exists. The rest carry no rule-id tag on
-# purpose - the generator derives a toggle from an SSG rule-id tag, and a product decision
-# is not a per-rule opt-out. Idempotent: harmless where the profile already covers a module.
 - name: Product hardening | Ensure kernel module 'cramfs' is disabled
   ansible.builtin.copy:
     dest: /etc/modprobe.d/cramfs.conf
