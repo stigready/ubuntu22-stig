@@ -1,9 +1,9 @@
 galaxy_info:
   role_name: ubuntu22_stig
   namespace: stigready
-  description: Ansible role for Ubuntu 22.04 LTS DISA STIG hardening (stig). ComplianceAsCode/SSG
-    remediation, OpenSCAP-verified in StigForge CI. Install with ansible-galaxy or
-    git.
+  description: Ansible role for Ubuntu 22.04 LTS, generated from the Canonical Ubuntu
+    22.04 LTS Security Technical Implementation Guide (STIG) V2R7 profile in ComplianceAsCode
+    SSG 0.1.82.
   license: BSD-3-Clause
   min_ansible_version: '2.16'
   platforms:

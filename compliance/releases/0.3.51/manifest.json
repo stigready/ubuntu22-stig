@@ -1,0 +1,9 @@
+{
+  "role": "ubuntu22_stig",
+  "version": "0.3.51",
+  "matrix_status": "green",
+  "factory_commit": "8e25cfbe2f728d01f4a83e9ecd222c5f20fae225",
+  "content_digest": "b03010810c47bc6b906b1a03a4cf68b0d5c99f9fd2d55cc7c416166b04233d95",
+  "container_verify": "removed-0017",
+  "compliance_evidence": "Not produced here. Container verify was removed because a container cannot evaluate most hardening rules. No OpenSCAP results ship with this release. A StigReady AMI build that pins this role version scores the image it builds."
+}
